@@ -17,7 +17,7 @@ https://github.com/Azure/bicep/blob/main/docs/installing.md#windows-installer
     "contentVersion": "1.0.0.0",
     "parameters": {
         "backupVaultName": {
-        "value": "samplediskvault0"
+        "value": "xxxx"
         },
         "policielist": {
             "value": ["xxxxx"]
