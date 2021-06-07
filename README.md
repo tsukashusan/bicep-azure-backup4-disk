@@ -34,7 +34,7 @@ https://github.com/Azure/bicep/blob/main/docs/installing.md#windows-installer
     - xxx -> Disk Resource Name.
     - xxxx -> Resource of location.
     - xxxxx -> Policy Name (Reference azuredeploy.backup.disk-vault.parameters.dev.json).
-    - xxxxxx -> Vault Name (Reference azuredeploy.backup.disk-vault.parameters.dev.json). </br>
+    - xxxxxx -> Vault Name (Reference azuredeploy.backup.disk-vault.parameters.dev.json).
 ```
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
@@ -190,8 +190,6 @@ $parameterFile = "azuredeploy.backup.disk-instance.parameters.dev.json" -option 
 setlocal
 set bicepFile=create_backup_disk.bicep
 set parameterFile=azuredeploy.backup.disk-instance.parameters.dev.json
-set resourceGroupName=xxxxx
-set location=xxxxx
 ```
 
 2. Go to STEP2 (Azure CLI or PowerShell)
@@ -207,7 +205,6 @@ New-AzResourceGroupDeployment `
   -Verbose
 ```
 
-
 ### STEP 2 (Azure CLI + PowerShell) ※ recommended
 1. Deployment Create  
 ```
@@ -219,8 +216,6 @@ az deployment group create --resource-group ${resourceGroupName} --template-file
 ```
 az deployment group create --resource-group %resourceGroupName% --template-file %bicepFile% --parameters %parameterFile% --verbose
 ```
-
-
 
 # CONFIDENTIAL 
 本リポジトリにあるすべての成果物は情報提供のみを目的としており、本リポジトリにあるすべての成果物に記載されている情報は、状況等の変化により、内容は変更される場合があります。本リポジトリにあるすべての成果物の情報に対して明示的、黙示的または法的な、いかなる保証も行いません。
