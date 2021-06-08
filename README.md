@@ -156,8 +156,8 @@ az group create --name %resourceGroupName% --location %location% --verbose
 az deployment group create --resource-group %resourceGroupName% --template-file %BICEP_FILE% --parameters %PARAMETER_FILE% --verbose
 ```
 ### STEP 3 Role Assign ###
-xxx -> Vault Name (Reference __azuredeploy.backup.disk-vault.parameters.dev.json__).</br>
-xxxx -> Disk Resource Name (Reference __azuredeploy.backup.disk-instance.parameters.dev.json__)
+- xxx -> Vault Name (Reference __azuredeploy.backup.disk-vault.parameters.dev.json__).
+- xxxx -> Disk Resource Name (Reference __azuredeploy.backup.disk-instance.parameters.dev.json__)
 
 ```
 # role assign

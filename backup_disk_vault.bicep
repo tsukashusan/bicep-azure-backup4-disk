@@ -4,6 +4,7 @@ param location string
 param type string //LocallyRedundant, GeoRedundant
 var dataProtectionUniqueId = guid(resourceGroup().id, resourceGroup().name)
 var DiskBackupSnapShot = '7efff54f-a5b4-42b5-a1c5-5411624893ce'
+
 resource backupcontainer 'Microsoft.DataProtection/backupVaults@2021-02-01-preview' = {
   name: backupVaultName
   identity:{
