@@ -9,7 +9,7 @@
             "value": ["xxxxx"]
         },
         "type": {
-            "value": "LocallyRedundant"
+            "value": "GeoRedundant"
         }
     }
 }
