@@ -8,19 +8,19 @@ https://github.com/Azure/bicep/blob/main/docs/installing.md#windows-installer
 1. Edit parameter File
 - azuredeploy.backup.disk-vault.parameters.dev.json</br>
   - require
-    - xxxx -> (backupVaultName)
-    - xxxxx -> (Name of policy)
-    - LocallyRedundant -> Choose LocallyRedundant or GeoRedundant.
+    - xxx -> (backupVaultName)
+    - xxxx -> (Name of policy)
+    - GeoRedundant -> Choose LocallyRedundant or GeoRedundant.
 ```
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "backupVaultName": {
-        "value": "xxxx"
+        "value": "xxx"
         },
         "policielist": {
-            "value": ["xxxxx"]
+            "value": ["xxxx"]
         },
         "type": {
             "value": "LocallyRedundant"

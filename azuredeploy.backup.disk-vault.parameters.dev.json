@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "backupVaultName": {
-        "value": "samplediskvault0"
+            "value": "xxx"
         },
         "policielist": {
-            "value": ["xxxxx"]
+            "value": ["xxxx"]
         },
         "type": {
             "value": "GeoRedundant"
