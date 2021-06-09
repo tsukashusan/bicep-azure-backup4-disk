@@ -163,6 +163,8 @@ az deployment group create --resource-group %resourceGroupName% --template-file 
 - xxx -> Vault Name (Reference __azuredeploy.backup.disk-vault.parameters.dev.json__).
 - xxxx -> Disk Resource Name (Reference __azuredeploy.backup.disk-instance.parameters.dev.json__)
 
+
+__If a container is defined with the same name, multiple IDs($servicePrincipal.ApplicationId) will appear.__
 ```
 # role assign
 $servicePrincipal = Get-AzADServicePrincipal -DisplayName "xxx"
@@ -170,12 +172,12 @@ $roleDefinitionBackUpReaderName = "Disk Backup Reader"
 $targetDiskName = "xxxx"
 $diskResourceType = "Microsoft.Compute/disks"
 $resource = Get-AzResource -name $targetDiskName -ResourceType $diskResourceType -ResourceGroupName $resourceGroupName
-New-AzRoleAssignment -RoleDefinitionName $roleDefinitionBackUpReaderName   -Scope $resource.ResourceId -ApplicationId $servicePrincipal.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName $roleDefinitionBackUpReaderName -Scope $resource.ResourceId -ApplicationId $servicePrincipal.ApplicationId
 
 $roleDefinitionDiskSnapshotName = "Disk Snapshot Contributor"
 
 $resourceGroup = Get-AzResourceGroup -ResourceGroupName $resourceGroupName
-New-AzRoleAssignment -RoleDefinitionName $roleDefinitionDiskSnapshotName  -Scope $resourceGroup.ResourceId -ApplicationId $servicePrincipal.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName $roleDefinitionDiskSnapshotName -Scope $resourceGroup.ResourceId -ApplicationId $servicePrincipal.ApplicationId
 ```
 ## Usage(Set Backup Disk)
 ### STEP 1 (PowerShell) ※ recommended
