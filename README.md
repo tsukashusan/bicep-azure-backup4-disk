@@ -160,25 +160,25 @@ az group create --name %resourceGroupName% --location %location% --verbose
 az deployment group create --resource-group %resourceGroupName% --template-file %bicepFile% --parameters %parameterFile% --verbose
 ```
 ### STEP 3 Role Assign ###
-- xxx -> Vault Name (Reference __azuredeploy.backup.disk-vault.parameters.dev.json__).
+- xxx -> Resource Group Name for Target Disk
+- xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -> Vault of Managed ID (from Managed ID section of azure portal in backup container).
 - xxxx -> Disk Resource Name (Reference __azuredeploy.backup.disk-instance.parameters.dev.json__)
 
-
-__If a container is defined with the same name, multiple IDs($servicePrincipal.ApplicationId) will appear.__
 ```
 # role assign
-$servicePrincipal = Get-AzADServicePrincipal -DisplayName "xxx"
+$targetResourceGroupforDisk = "xxx"
+$servicePrincipal  = Get-AzADServicePrincipal -ObjectId  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 $roleDefinitionBackUpReaderName = "Disk Backup Reader"
 $targetDiskName = "xxxx"
 $diskResourceType = "Microsoft.Compute/disks"
-$resource = Get-AzResource -name $targetDiskName -ResourceType $diskResourceType -ResourceGroupName $resourceGroupName
+$resource = Get-AzResource -name $targetDiskName -ResourceType $diskResourceType -ResourceGroupName $targetResourceGroupforDisk
 New-AzRoleAssignment -RoleDefinitionName $roleDefinitionBackUpReaderName -Scope $resource.ResourceId -ApplicationId $servicePrincipal.ApplicationId
 
 $roleDefinitionDiskSnapshotName = "Disk Snapshot Contributor"
-
-$resourceGroup = Get-AzResourceGroup -ResourceGroupName $resourceGroupName
+$resourceGroup = Get-AzResourceGroup -ResourceGroupName $targetResourceGroupforDisk
 New-AzRoleAssignment -RoleDefinitionName $roleDefinitionDiskSnapshotName -Scope $resourceGroup.ResourceId -ApplicationId $servicePrincipal.ApplicationId
 ```
+
 ## Usage(Set Backup Disk)
 ### STEP 1 (PowerShell) ※ recommended
 1. Execute PowerShell Prompt
