@@ -118,8 +118,8 @@ New-AzResourceGroup -Name ${resourceGroupName} -Location ${location} -Verbose
 New-AzResourceGroupDeployment `
   -Name devenvironment `
   -ResourceGroupName ${resourceGroupName} `
-  -TemplateFile ${BICEP_FILE} `
-  -TemplateParameterFile ${PARAMETER_FILE} `
+  -TemplateFile ${bicepFile} `
+  -TemplateParameterFile ${parameterFile} `
   -Verbose
 ```
 
@@ -139,7 +139,7 @@ az group create --name ${resourceGroupName} --location ${location} --verbose
 ```
 4. Deployment Create  
 ```
-az deployment group create --resource-group ${resourceGroupName} --template-file ${BICEP_FILE} --parameters ${PARAMETER_FILE} --verbose
+az deployment group create --resource-group ${resourceGroupName} --template-file ${bicepFile} --parameters ${parameterFile} --verbose
 ```
 
 ### STEP 2 (Azure CLI + cmd.exe) ※ not recommended
@@ -157,7 +157,7 @@ az group create --name %resourceGroupName% --location %location% --verbose
 ```
 4. Deployment Create  
 ```
-az deployment group create --resource-group %resourceGroupName% --template-file %BICEP_FILE% --parameters %PARAMETER_FILE% --verbose
+az deployment group create --resource-group %resourceGroupName% --template-file %bicepFile% --parameters %parameterFile% --verbose
 ```
 ### STEP 3 Role Assign ###
 - xxx -> Vault Name (Reference __azuredeploy.backup.disk-vault.parameters.dev.json__).
@@ -204,15 +204,15 @@ set parameterFile=azuredeploy.backup.disk-instance.parameters.dev.json
 New-AzResourceGroupDeployment `
   -Name devenvironment `
   -ResourceGroupName ${resourceGroupName} `
-  -TemplateFile ${BICEP_FILE} `
-  -TemplateParameterFile ${PARAMETER_FILE} `
+  -TemplateFile ${bicepFile} `
+  -TemplateParameterFile ${parameterFile} `
   -Verbose
 ```
 
 ### STEP 2 (Azure CLI + PowerShell) ※ recommended
 1. Deployment Create  
 ```
-az deployment group create --resource-group ${resourceGroupName} --template-file ${BICEP_FILE} --parameters ${PARAMETER_FILE} --verbose
+az deployment group create --resource-group ${resourceGroupName} --template-file ${bicepFile} --parameters ${parameterFile} --verbose
 ```
 
 ### STEP 2 (Azure CLI + cmd.exe) ※ not recommended
