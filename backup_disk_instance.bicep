@@ -4,16 +4,7 @@ param objectTypeArray array
 param dataSourceInfoArray array
 param policyName string
 param dataSourceSetInfoArray array
-param principalId string
-
-var DiskBackupReader = '3e5e47e6-65f7-47ef-90b5-e5dd4d455f24'
-resource roleassign4 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' =[for dataSourceInfo in dataSourceInfoArray: {
-  name: guid(resourceId('Microsoft.Compute/disks', dataSourceInfo.resourceName), dataSourceInfo.resourceName)
-  properties: {
-    principalId: principalId
-    roleDefinitionId: '${resourceId('Microsoft.Compute/disks', dataSourceInfo.resourceName)}/providers/Microsoft.Authorization/roleDefinitions/${DiskBackupReader}'
-  }
-}]
+param targetResourceGroupName string
 
 resource diskbackup 'Microsoft.DataProtection/backupVaults/backupInstances@2021-02-01-preview' = [for (backupInstanceName, index) in backupInstanceNameArray: {
   name: '${vaultName}/${dataSourceInfoArray[index].resourceName}-${guid(backupInstanceName)}'
@@ -22,11 +13,11 @@ resource diskbackup 'Microsoft.DataProtection/backupVaults/backupInstances@2021-
     objectType: objectTypeArray[index]
     dataSourceInfo: {
       objectType: dataSourceInfoArray[index].objectType
-      resourceID: resourceId(dataSourceInfoArray[index].resourceType, dataSourceInfoArray[index].resourceName)
+      resourceID:  '${subscription().id}/resourceGroups/${targetResourceGroupName}/providers/${dataSourceInfoArray[index].resourceType}/${dataSourceInfoArray[index].resourceName}'
       resourceName: dataSourceInfoArray[index].resourceName
       resourceLocation: dataSourceInfoArray[index].resourceLocation
       resourceType: dataSourceInfoArray[index].resourceType
-      resourceUri: resourceId(dataSourceInfoArray[index].resourceType, dataSourceInfoArray[index].resourceName)
+      resourceUri: '${subscription().id}/resourceGroups/${targetResourceGroupName}/providers/${dataSourceInfoArray[index].resourceType}/${dataSourceInfoArray[index].resourceName}'
       datasourceType: dataSourceInfoArray[index].datasourceType
     }
     policyInfo: {
@@ -43,5 +34,4 @@ resource diskbackup 'Microsoft.DataProtection/backupVaults/backupInstances@2021-
     }
     dataSourceSetInfo: dataSourceSetInfoArray[index]
   }
-  
 }]

@@ -7,7 +7,7 @@ param objectTypeArray array
 param dataSourceSetInfoArray array
 param policyName string
 param vaultName string
-param principalId string
+param targetResourceGroupName string
 
 module createvault 'backup_disk_instance.bicep' = {
   name: 'backupdisk'
@@ -18,6 +18,6 @@ module createvault 'backup_disk_instance.bicep' = {
     policyName: policyName
     vaultName: vaultName
     dataSourceSetInfoArray: dataSourceSetInfoArray
-    principalId: principalId
+    targetResourceGroupName: targetResourceGroupName
   }
 }
