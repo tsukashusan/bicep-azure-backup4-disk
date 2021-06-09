@@ -35,6 +35,7 @@ https://github.com/Azure/bicep/blob/main/docs/installing.md#windows-installer
     - xxxx -> Resource of location.
     - xxxxx -> Policy Name (Reference azuredeploy.backup.disk-vault.parameters.dev.json).
     - xxxxxx -> Vault Name (Reference azuredeploy.backup.disk-vault.parameters.dev.json).
+    - xxxxxxx -> Resource Group Name (from target disk of ResourceGroup)
 ```
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
@@ -65,6 +66,9 @@ https://github.com/Azure/bicep/blob/main/docs/installing.md#windows-installer
         },
         "vaultName":{
             "value": "xxxxxx"
+        },
+        "targetResourceGroupName":{
+            "value": "xxxxxxx"
         }
     }
 }
