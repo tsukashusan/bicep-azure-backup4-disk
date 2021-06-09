@@ -79,8 +79,8 @@ https://github.com/Azure/bicep/blob/main/docs/installing.md#windows-installer
 set-variable -name TENANT_ID "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -option constant
 set-variable -name SUBSCRIPTOIN_GUID "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -option constant
 
-$bicepFile = "create_disk_vault_policy.bicep" -option constant
-$parameterFile = "azuredeploy.backup.disk-vault.parameters.dev.json" -option constant
+$bicepFile = "create_disk_vault_policy.bicep"
+$parameterFile = "azuredeploy.backup.disk-vault.parameters.dev.json"
 $resourceGroupName = "xxxxx"
 $location = "xxxxx"
 ```
@@ -179,8 +179,8 @@ New-AzRoleAssignment -RoleDefinitionName $roleDefinitionDiskSnapshotName  -Scope
 1. Set Parameter(x)
 
 ```
-$bicepFile = "create_backup_disk.bicep" -option constant
-$parameterFile = "azuredeploy.backup.disk-instance.parameters.dev.json" -option constant
+$bicepFile = "create_backup_disk.bicep"
+$parameterFile = "azuredeploy.backup.disk-instance.parameters.dev.json"
 ```
 
 ### STEP 1 (cmd.exe) ※ not recommended
